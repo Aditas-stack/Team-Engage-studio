@@ -1,0 +1,6 @@
+{
+  "name": "Wednesday Live — Townhall Game & Winner Draw Studio",
+  "description": "An interactive broadcast-grade virtual team game show and live prize wheel studio designed for Google Meet screen sharing during team townhalls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

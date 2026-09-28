@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="dark" style="background-color: #090D16; color: #F8FAFC;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Engage Studio — Interactive Team Engagement Game Show</title>
+    <meta name="description" content="An interactive broadcast-grade virtual team engagement game show and live lucky draw studio designed for Google Meet screen sharing." />
+    <meta property="og:title" content="Team Engage Studio — Interactive Team Engagement Game Show" />
+    <meta property="og:description" content="An interactive broadcast-grade virtual team engagement game show and live lucky draw studio designed for Google Meet screen sharing." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      html, body {
+        background-color: #090D16;
+        color: #F8FAFC;
+        margin: 0;
+        min-height: 100%;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0A1120] text-[#F8FAFC] antialiased selection:bg-amber-500/30 selection:text-amber-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var isViteDev = !!document.querySelector('script[src*="@vite/client"]');
+        var hasRawTsx = !!document.querySelector('script[src*="src/main.tsx"]');
+        function bootStaticBundle() {
+          if (window.__TEAM_ENGAGE_MOUNTED__ || window.__TEAM_ENGAGE_BOOTING__) return;
+          window.__TEAM_ENGAGE_BOOTING__ = true;
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist-live/app.css';
+          document.head.appendChild(link);
+          var script = document.createElement('script');
+          script.type = 'module';
+          script.src = './dist-live/app.js';
+          document.body.appendChild(script);
+        }
+        if (!isViteDev && hasRawTsx) {
+          bootStaticBundle();
+        } else if (!isViteDev) {
+          window.addEventListener('load', function () {
+            setTimeout(function () {
+              var root = document.getElementById('root');
+              if (root && !root.hasChildNodes() && !window.__TEAM_ENGAGE_MOUNTED__) {
+                bootStaticBundle();
+              }
+            }, 600);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
